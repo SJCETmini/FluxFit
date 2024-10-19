@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+
+    <link rel="stylesheet" href="/stylesheets/r.css">
+
+    <script src="/javascript/j.js" defer></script>
+  
+    <title>Frontend Mentor | Interactive Rating Component</title>
+
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <form id="rating-form" action="/users/review" method="post">
+                <div id="survey-el" class="survey-el active">
+                    <div class="icon">
+                        <i class="fa-solid fa-star" style="color: #87f7e3;"></i>                    </div>
+                    <h2>How did we do?</h2>
+                    <p>Please let us know how we did with your support request. All feedback is appreciated to help us improve our offering!</p>
+                    <div class="num-btns">
+                        <button type="button" data-num-btn>1</button>
+                        <button type="button" data-num-btn>2</button>
+                        <button type="button" data-num-btn>3</button>
+                        <button type="button" data-num-btn>4</button>
+                        <button type="button" data-num-btn>5</button>
+                    </div>
+                    <textarea name="review" placeholder="Write your review here..."></textarea>
+                    <input type="hidden" name="rating" id="rating-input">
+                    <div class="text-center">
+                        <button type="submit" class="btn submit-btn">Submit</button>
+                    </div>
+                </div>
+
+                <div id="thank-you-el" class="thank-you-el">
+                    <img src="/images/illustration-thank-you.svg" alt="Receipt icon.">
+                    <span class="selected">You selected <span id="selected-num-el">4</span> out of 5</span>
+                    <h2>Thank you!</h2>
+                    <p>We appreciate you taking the time to give a rating. If you ever need more support, don't hesitate to get in touch!</p>
+                    <a href="/users" class="button">Back to home</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const numBtns = document.querySelectorAll("[data-num-btn]");
+            const ratingInput = document.getElementById("rating-input");
+            const selectedNumEl = document.getElementById("selected-num-el");
+            const surveyEl = document.getElementById("survey-el");
+            const thankYouEl = document.getElementById("thank-you-el");
+
+            numBtns.forEach(btn => {
+                btn.addEventListener("click", function() {
+                    numBtns.forEach(b => b.classList.remove("selected"));
+                    btn.classList.add("selected");
+                    ratingInput.value = btn.textContent;
+                });
+            });
+
+            document.getElementById("rating-form").addEventListener("submit", function(event) {
+                event.preventDefault();
+                if (ratingInput.value) {
+                    selectedNumEl.textContent = ratingInput.value;
+                    surveyEl.classList.remove("active");
+                    thankYouEl.classList.add("active");
+
+                    // Submit the form data using fetch
+                    fetch(this.action, {
+                        method: this.method,
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            rating: ratingInput.value,
+                            review: this.review.value
+                        })
+                    }).then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    }).then(data => {
+                        console.log('Success:', data);
+                    }).catch((error) => {
+                        console.error('Error:', error);
+                    });
+                } else {
+                    alert("Please select a rating before submitting.");
+                }
+            });
+        });
+    </script>
+</body>
+</html>

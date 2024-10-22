@@ -54,8 +54,8 @@
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="signupDropdown" style="background-color: transparent;">
                                         <ul class="nav-ul">
-                                            <li><a class="dropdown-item" href="/users/login">User Sign Up</a></li>
-                                            <li><a class="dropdown-item" href="/gymowner/register">Owner Sign Up</a></li>
+                                            <li><a class="dropdown-item" href="/views/users/login.php">User Sign Up</a></li>
+                                            <li><a class="dropdown-item" href="/vews/gym-owner/register.php">Owner Sign Up</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -69,8 +69,8 @@
                         </a>
 
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <a style="color: white;" class="dropdown-item" href="/users/login">User</a>
-                            <a style="color: white;" class="dropdown-item" href="/gymowner/register">Owner</a>
+                            <a style="color: white;" class="dropdown-item" href="/views/users/login.php">User</a>
+                            <a style="color: white;" class="dropdown-item" href="/views/gym-owner/register.php">Owner</a>
                         </div>
                     </div> 
                 </div>
@@ -85,8 +85,8 @@
                     <h1 class="fs-primary-heading fw-bold uppercase"><span class="special-text"> Fitness</span> is your
                         passion <span class="special-text">with</span> aggression</h1>
                     <p>A unified fitness centers platform.</p>
-                    <a href="/users/login" role="button" class="btn">User Sign In</a>
-                    <a href="/gymowner/login" role="button" class="btn ml-3">Owner Sign In</a>
+                    <a href="/views/users/login.php" role="button" class="btn">User Sign In</a>
+                    <a href="/views/gym-owner/login.php" role="button" class="btn ml-3">Owner Sign In</a>
                     <!-- <button class="btn">Get Started</button> -->
                 </div>
             </div>

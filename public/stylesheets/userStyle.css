@@ -421,19 +421,19 @@ body {
 }
 
 #crossfit {
-	background-image: url(/images/crossfit.jpeg);
+	background-image: url(/public/images/crossfit.jpeg);
 }
 
 #yoga {
-	background-image: url(/images/yoga.jpeg);
+	background-image: url(/public/images/yoga.jpeg);
 }
 
 #pilate {
-	background-image: url(/images/pilate.jpeg);
+	background-image: url(/public/images/pilate.jpeg);
 }
 
 #mma {
-	background-image: url(/images/mma.jpeg);
+	background-image: url(/public/images/mma.jpeg);
 }
 
 #content main .box-info li .text h3 {

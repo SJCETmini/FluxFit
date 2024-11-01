@@ -1,16 +1,23 @@
+<?php
+include '../layout/userLayout.php';
+include '../partials/user-nav.php';
+include '../partials/user-sidebar.php';
+
+?>
+
 <section id="content">
     <main>
         <div class="head-title">
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="/images/c-2.png" class="d-block w-100" alt="...">
+                        <img src="/public/images/c-2.png" class="d-block w-100" alt="...">
                     </div>
                     <div class="carousel-item">
-                        <img src="/images/c-3.png" class="d-block w-100" alt="...">
+                        <img src="/public/images/c-3.png" class="d-block w-100" alt="...">
                     </div>
                     <div class="carousel-item">
-                        <img src="/images/c-4.png" class="d-block w-100" alt="...">
+                        <img src="/public/images/c-4.png" class="d-block w-100" alt="...">
                     </div>
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">

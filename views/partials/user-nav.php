@@ -16,7 +16,7 @@
 			<span class="num">8</span>
 		</a>
 		<a href="#" class="profile">
-			<img src="/images/user3.jpeg">
+			<img src="/public/images/user3.jpeg">
 		</a> --}}
 
 		<div class="profile-icon" id="initialsPlaceholder"></div>

@@ -1,7 +1,23 @@
+<?php
+include '../layout/userLayout.php';
+include '../partials/user-nav.php';
+include '../partials/user-sidebar.php';
+include '../../config.php';
+$gym_id=$_GET['id'];
+$sql = "SELECT * FROM gyms WHERE id='$gym_id'";
+$result = mysqli_query($conn, $sql);
+
+if ($result) {
+    $row = mysqli_fetch_assoc($result);
+    $gym_details= $row;
+    
+}
+?>
+
 <section id="content">
     <main>
         <div>
-            <h2 class="gym-name">{{details.name}}</h2>
+            <h2 class="gym-name"><?php print($gym_details['name']);  ?></h2>
         </div>
 
         <!-- Carousel container -->
@@ -9,38 +25,46 @@
             <!-- Bootstrap Carousel HTML goes here -->
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
-                    <!-- Video -->
+                    <?php
+                    /*
+                    <!-- Video 
+                     
                     <div class="carousel-item active">
                         <video class="d-block w-100" muted autoplay loop>
                             <source src="data:video/mp4;base64,{{details.video.data}}"
                                 type="{{details.video.contentType}}">
                         </video>
                     </div>
-                    <!-- Images -->
+                    -->
+                    <!-- Images 
                     {{#each details.images}}
                     <div class="carousel-item">
                         <img src="data:{{contentType}};base64,{{data}}" alt="{{imageName}}" alt="Image 1">
                     </div>
+                    
                     {{/each}}
+                    -->
+                    */
+                    ?>
 
-                    {{!-- <div class="carousel-item">
-                        <img src="/images/Gym Detail/facility zoom out.jpg" class="d-block w-100" alt="Image 1">
+                    <div class="carousel-item">
+                        <img src="/public/images/Gym Detail/facility zoom out.jpg" class="d-block w-100" alt="Image 1">
                     </div>
                     <div class="carousel-item">
-                        <img src="/images/Gym Detail/weight-3.jpg" class="d-block w-100" alt="Image 2">
+                        <img src="/public/images/Gym Detail/weight-3.jpg" class="d-block w-100" alt="Image 2">
                     </div>
                     <div class="carousel-item">
-                        <img src="/images/Gym Detail/meeting.jpg" class="d-block w-100" alt="Image 3">
+                        <img src="/public/images/Gym Detail/meeting.jpg" class="d-block w-100" alt="Image 3">
                     </div>
                     <div class="carousel-item">
-                        <img src="/images/Gym Detail/pilates-1.jpg" class="d-block w-100" alt="Image 4">
+                        <img src="/public/images/Gym Detail/pilates-1.jpg" class="d-block w-100" alt="Image 4">
                     </div>
                     <div class="carousel-item">
-                        <img src="/images/Gym Detail/weight-1t.jpg" class="d-block w-100" alt="Image 5">
+                        <img src="/public/images/Gym Detail/weight-1t.jpg" class="d-block w-100" alt="Image 5">
                     </div>
                     <div class="carousel-item">
-                        <img src="/images/Gym Detail/weight-4.jpg" class="d-block w-100" alt="Image 6">
-                    </div> --}}
+                        <img src="/public/images/Gym Detail/weight-4.jpg" class="d-block w-100" alt="Image 6">
+                    </div> 
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -56,28 +80,29 @@
 
             <div class="row">
                 <div class="col-lg-6">
-                    <!-- Video -->
+                    <!-- Video 
                     <div class="gym-detail-video-container">
                         <video class="d-block w-100" muted autoplay loop>
                             <source src="data:video/mp4;base64,{{details.video.data}}"
                                 type="{{details.video.contentType}}">
                         </video>
                     </div>
+                    -->
                 </div>
                 <div class="col-lg-6">
                     <!-- Image container for higher screen sizes -->
                     <div class="gym-detail-image-container">
 
-                        {{#each details.images}}
-                        <img src="data:{{contentType}};base64,{{data}}" alt="{{imageName}}" alt="Image 1">
-                        {{/each}}
+                        
+                        
+                        
                         <!-- Images go here -->
 
-                        {{!-- <img src="/images/Gym Detail/weight-3.jpg" alt="Image 2">
-                        <img src="/images/Gym Detail/meeting.jpg" alt="Image 3">
-                        <img src="/images/Gym Detail/pilates-1.jpg" alt="Image 4">
-                        <img src="/images/Gym Detail/weight-1t.jpg" alt="Image 5">
-                        <img src="/images/Gym Detail/weight-4.jpg" alt="Image 6"> --}}
+                        <img src="/public/images/Gym Detail/weight-3.jpg" alt="Image 2">
+                        <img src="/public/images/Gym Detail/meeting.jpg" alt="Image 3">
+                        <img src="/public/images/Gym Detail/pilates-1.jpg" alt="Image 4">
+                        <img src="/public/images/Gym Detail/weight-1t.jpg" alt="Image 5">
+                        <img src="/public/images/Gym Detail/weight-4.jpg" alt="Image 6"> 
                     </div>
                 </div>
             </div>
@@ -91,11 +116,11 @@
                             <div class="d-flex flex-row">
                                 <i class="fa-solid fa-location-dot mt-1 mr-3"></i>
                                 <p class="address">
-                                    {{details.addressdisp}}
+                                <?php print($gym_details['address']);  ?>
                                 </p>
                             </div>
                             <div>
-                                <a class="ml-5" onclick="navigateToDirection()" style="cursor:pointer">
+                                <a class="ml-5" onclick="#__navigateToDirection()" style="cursor:pointer">
                                     <div class="navigate d-flex flex-row">
                                         <p>NAVIGATE</p>
                                         <i class="fa-solid fa-location-arrow ml-1" style="font-size: 1.5rem;"></i>
@@ -114,15 +139,17 @@
                         <h5>Working hours</h5>
                     </div>
                     <div class="d-flex flex-row">
-                        <p style="padding-left: 32px;">{{details.workingHours.morningStartTime}}am -
-                            {{details.workingHours.morningEndTime}}pm</p>
-                        {{#if status}}
+                        <p style="padding-left: 32px;"><?php print($gym_details['working_hours']);  ?></p>
+                        
                         <p class="text-success ml-5">Open</p>
+                        <!--
                         {{else}}
                         <p class="text-danger ml-5">Closed</p>
                         {{/if}}
+-->
                     </div>
                 </div>
+                <!--
                 <div class="amneties border-bottom mt-3">
                     <h5>Amneties</h5>
                     <div class="amneties-flex-container">
@@ -136,10 +163,11 @@
                     
                     </div>
                 </div>
+-->
                 <div class="gym-description border-bottom mt-3">
                     <h5>Desciption</h5>
                     <p>
-                        {{details.description}}</p>
+                    <?php print($gym_details['description']);  ?></p>
                 </div>
 
                 <div class="container-fluid mt-3">
@@ -151,7 +179,7 @@
                                 </div>
                                 <div class="gym-detail-card-body">
                                     <p>
-                                    <h2>Rs {{details.dailyFee}}/day</h2>
+                                    <h2>Rs <?php print($gym_details['daily_fee']);  ?>/day</h2>
                                     </p>
                                     <div class="card-element-hidden-basic p-3">
                                         <ul class="gym-detail-card-element-container m-3 text-left">
@@ -169,11 +197,11 @@
                         <div class="col-12 col-md-6 my-3">
                             <div class="gym-detail-card-standard mx-auto">
                                 <div class="gym-detail-card-header gym-detail-header-standard">
-                                    <h4>Be our member <br>@Rs {{details.membershipFee}}</h4>
+                                    <h4>Be our member <br>@Rs <?php print($gym_details['membership_fee']);  ?></h4>
                                 </div>
                                 <div class="gym-detail-card-body">
                                     <p>
-                                    <h2>Rs {{details.monthlyFee}} / mo</h2>
+                                    <h2>Rs <?php print($gym_details['monthly_fee']);  ?> / mo</h2>
                                     </p>
                                     <div class="card-element-hidden-standard p-3">
                                         <ul class="gym-detail-card-element-container card-element-list m-3 text-left">
@@ -183,7 +211,7 @@
                                             </li>
                                             <!-- <li class="card-element">40000 users</li> -->
                                         </ul>
-                                        <a href="/users/member/payment?id={{details._id}}"
+                                        <a href="/users/member/payment?id=<?php print($gym_details['id']);  ?>"
                                             class="price-btn price-btn-standard">Book now</a>
                                     </div>
                                 </div>

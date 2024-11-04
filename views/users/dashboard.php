@@ -106,7 +106,7 @@ if ($result) {
                                         <p class="card-text description">
                                             <?php echo htmlspecialchars($gym['description']); ?></p>
                                         <div>
-                                            <a href="/users/gym-detail/?id=<?php echo $gym['id']; ?>"
+                                            <a href="/views/users/gym-detail.php?id=<?php echo $gym['id']; ?>"
                                                 class="btn btn-primary">Book Now</a>
                                         </div>
                                     </div>

@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Video Upload Form</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/stylesheets/gymdashboard.css">
+  <link rel="stylesheet" href="/public/stylesheets/gymdashboard.css">
 </head>
 
 <body style="margin: 0px;">
@@ -30,7 +30,7 @@
       </form>
     </div>
   </section>
-  <script src="/javascript/gymowner.js"></script>
+  <script src="/public/javascript/gymowner.js"></script>
 </body>
 
 </html>

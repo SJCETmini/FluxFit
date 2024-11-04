@@ -6,7 +6,7 @@
   <title>Gym Information Form</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-  <link rel="stylesheet" href="/stylesheets/gymdashboard.css" />
+  <link rel="stylesheet" href="/public/stylesheets/gymdashboard.css" />
 </head>
 
 <body>
@@ -126,7 +126,7 @@
             </div>
 
 
-            {{!-- peak time --}}
+             <!-- peak time  -->
 
             <div class="form-group">
               <label><strong><i class="fas fa-calendar-alt"></i>

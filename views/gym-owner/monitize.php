@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,8 +9,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
         integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-    <link rel="stylesheet" href="/stylesheets/gymdashboard.css">
+    <link rel="stylesheet" href="/public/stylesheets/gymdashboard.css">
 </head>
+
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: hsl(230, 73%, 5%);">
@@ -49,43 +51,44 @@
 
     <section class="verification-section mt-4">
         <div class="container">
-        <h1>Verify Status</h1>
-        <div class="conditions">
-            <div class="condition">
-                <span>Members Enrolled</span>
-                {{#if conditions.membersEnrolled}}
-                    <span class="met">&#10004;</span>
-                {{else}}
-                    <span class="not-met">&#10008;</span>
-                {{/if}}
+            <h1>Verify Status</h1>
+            <div class="conditions">
+                <div class="condition">
+                    <span>Members Enrolled</span>
+                    {{#if conditions.membersEnrolled}}
+                        <span class="met">&#10004;</span>
+                    {{else}}
+                        <span class="not-met">&#10008;</span>
+                    {{/if}}
+                </div>
+                <div class="condition">
+                    <span>Monthly Revenue</span>
+                    {{#if conditions.monthlyRevenue}}
+                        <span class="met">&#10004;</span>
+                    {{else}}
+                        <span class="not-met">&#10008;</span>
+                    {{/if}}
+                </div>
+                <div class="condition">
+                    <span>Average Rating</span>
+                    {{#if conditions.averagerating}}
+                        <span class="met">&#10004;</span>
+                    {{else}}
+                        <span class="not-met">&#10008;</span>
+                    {{/if}}
+                </div>
             </div>
-            <div class="condition">
-                <span>Monthly Revenue</span>
-                {{#if conditions.monthlyRevenue}}
-                    <span class="met">&#10004;</span>
-                {{else}}
-                    <span class="not-met">&#10008;</span>
-                {{/if}}
-            </div>
-            <div class="condition">
-                <span>Average Rating</span>
-                {{#if conditions.averagerating}}
-                    <span class="met">&#10004;</span>
-                {{else}}
-                    <span class="not-met">&#10008;</span>
-                {{/if}}
-            </div>
-        </div>
-{{#if conditions.allmet}}
-    <a href="/gymowner/proceed-application" class="btn btn-primary">Proceed with Application</a>
-{{else}}
-    <a href="#" class="btn btn-primary disabled" aria-disabled="true">Proceed with Application</a>
-{{/if}}
+            {{#if conditions.allmet}}
+                <a href="/gymowner/proceed-application" class="btn btn-primary">Proceed with Application</a>
+            {{else}}
+                <a href="#" class="btn btn-primary disabled" aria-disabled="true">Proceed with Application</a>
+            {{/if}}
 
-    </div>
+        </div>
     </section>
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
         crossorigin="anonymous"></script>
 </body>
+
 </html>

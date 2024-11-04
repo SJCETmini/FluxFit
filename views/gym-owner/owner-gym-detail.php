@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
         integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-    <link rel="stylesheet" href="/stylesheets/gymdashboard.css">
+    <link rel="stylesheet" href="/public/stylesheets/gymdashboard.css">
 
     <style>
         .search-form {
@@ -152,24 +152,24 @@
                                 <img src="data:{{contentType}};base64,{{data}}" alt="{{imageName}}" alt="Image 1">
                             </div>
                             {{/each}}
-                            {{!-- <div class="carousel-item">
-                                <img src="/images/Gym Detail/facility zoom out.jpg" class="d-block w-100" alt="Image 1">
+                             <!-- <div class="carousel-item">
+                                <img src="/public/images/Gym Detail/facility zoom out.jpg" class="d-block w-100" alt="Image 1">
                             </div>
                             <div class="carousel-item">
-                                <img src="/images/Gym Detail/weight-3.jpg" class="d-block w-100" alt="Image 2">
+                                <img src="/public/images/Gym Detail/weight-3.jpg" class="d-block w-100" alt="Image 2">
                             </div>
                             <div class="carousel-item">
-                                <img src="/images/Gym Detail/meeting.jpg" class="d-block w-100" alt="Image 3">
+                                <img src="/public/images/Gym Detail/meeting.jpg" class="d-block w-100" alt="Image 3">
                             </div>
                             <div class="carousel-item">
-                                <img src="/images/Gym Detail/pilates-1.jpg" class="d-block w-100" alt="Image 4">
+                                <img src="/public/images/Gym Detail/pilates-1.jpg" class="d-block w-100" alt="Image 4">
                             </div>
                             <div class="carousel-item">
-                                <img src="/images/Gym Detail/weight-1t.jpg" class="d-block w-100" alt="Image 5">
+                                <img src="/public/images/Gym Detail/weight-1t.jpg" class="d-block w-100" alt="Image 5">
                             </div>
                             <div class="carousel-item">
-                                <img src="/images/Gym Detail/weight-4.jpg" class="d-block w-100" alt="Image 6">
-                            </div> --}}
+                                <img src="/public/images/Gym Detail/weight-4.jpg" class="d-block w-100" alt="Image 6">
+                            </div>  -->
                         </div>
                         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
                             data-slide="prev">
@@ -201,12 +201,12 @@
                                 {{#each details.images}}
                                 <img src="data:{{contentType}};base64,{{data}}" alt="{{imageName}}" alt="Image 1">
                                 {{/each}}
-                                {{!-- <img src="/images/Gym Detail/facility zoom out.jpg" alt="Image 1">
+                                <!-- <img src="/images/Gym Detail/facility zoom out.jpg" alt="Image 1">
                                 <img src="/images/Gym Detail/weight-3.jpg" alt="Image 2">
                                 <img src="/images/Gym Detail/meeting.jpg" alt="Image 3">
                                 <img src="/images/Gym Detail/pilates-1.jpg" alt="Image 4">
                                 <img src="/images/Gym Detail/weight-1t.jpg" alt="Image 5">
-                                <img src="/images/Gym Detail/weight-4.jpg" alt="Image 6"> --}}
+                                <img src="/images/Gym Detail/weight-4.jpg" alt="Image 6"> -->
                             </div>
                         </div>
                     </div>
@@ -256,7 +256,7 @@
                         <p class="py-2">
                             {{details.description}}</p>
                     </div>
-                    {{!-- <button type="submit" class="btn btn-danger">Update</button> --}}
+                    <!-- <button type="submit" class="btn btn-danger">Update</button> -->
                 </div>
             </section>
 

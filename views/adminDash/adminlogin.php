@@ -98,7 +98,7 @@
           Admin Login
         </div>
         <div class="card-body p-4">
-          <form method="post" action="/admin/login">
+          <form method="post" action="adminReg.php">
             <div class="mb-3">
               <div class="input-group">
                 <span class="input-group-text"><i class="fas fa-envelope"></i></span>
@@ -108,7 +108,7 @@
             <div class="mb-4">
               <div class="input-group">
                 <span class="input-group-text"><i class="fas fa-lock"></i></span>
-                <input type="password" class="form-control" id="password" placeholder="Password" name="password"
+                <input type="password" class="form-control" id="password" placeholder="password" name="password"
                   required>
               </div>
             </div>

@@ -30,6 +30,7 @@ if(isset($_POST['signup'])){
     } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
     }
+    header("Location: /views/users/login.php");
 }
 
 if(isset($_POST['userLogIn'])) {
@@ -54,6 +55,7 @@ if(isset($_POST['userLogIn'])) {
     } else {
         echo "No user found with that email address.";
     }
+    header("Location: /views/users/dashboard.php");
 }
 ?>
 

@@ -55,7 +55,7 @@ if(isset($_POST['userLogIn'])) {
     } else {
         echo "No user found with that email address.";
     }
-    header("Location: /views/users/dashboard.php");
+    header("Location: /views/users/owner-dashboard.php");
 }
 ?>
 

@@ -102,7 +102,7 @@
             <div class="mb-3">
               <div class="input-group">
                 <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-                <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" autocomplete="off" required>
+                <input type="text" class="form-control" id="email" placeholder="Enter email" name="email" autocomplete="off" required>
               </div>
             </div>
             <div class="mb-4">
@@ -113,7 +113,7 @@
               </div>
             </div>
             <div class="btn-container">
-              <button type="submit" class="btn btn-primary">Login</button>
+              <button type="submit" name="adminlogin" class="btn btn-primary">Login</button>
             </div>
           </form>
         </div>

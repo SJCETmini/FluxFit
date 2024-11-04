@@ -211,7 +211,7 @@ if ($result) {
                                             </li>
                                             <!-- <li class="card-element">40000 users</li> -->
                                         </ul>
-                                        <a href="/users/member/payment?id=<?php print($gym_details['id']);  ?>"
+                                        <a href="/views/users/membership.php?id=<?php print($gym_details['id']);  ?>"
                                             class="price-btn price-btn-standard">Book now</a>
                                     </div>
                                 </div>

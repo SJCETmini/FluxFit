@@ -2,19 +2,6 @@
 
 include '../../config.php';
 
-/*
-function UserReg($email,$name,$password,){
-    $hashed_pass=password_hash($password, PASSWORD_DEFAULT);
-    $sql = "INSERT INTO users (email, name, password) VALUES ('$email', '$name', '$hashed_pass')";
-
-    if (mysqli_query($conn, $sql)) {
-        echo "User registered successfully!";
-    } else {
-        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-    }
-
-}
-    */
 
 if(isset($_POST['signup'])){
    $name=$_POST['name'];
@@ -57,6 +44,29 @@ if(isset($_POST['userLogIn'])) {
     }
     header("Location: /views/users/dashboard.php");
 }
+
+if(isset($_POST['payment'])){
+
+    $uid=$_COOKIE['user_id'];
+    $gym_id=$_POST['gym_id'];
+    
+    $sql = "INSERT INTO memberships (uid, gym_id) VALUES ('$uid', '$gym_id')";
+
+    if (mysqli_query($conn, $sql)) {
+        //echo "User registered successfully!";
+        echo "<script>alert('Payment successfull!');</script>";
+        header("Location: /views/users/dashboard.php");
+    } else {
+        echo "<script>alert('Payment Error!');</script>";
+        
+    }
+
+    
+    
+
+}
+
+
 ?>
 
 

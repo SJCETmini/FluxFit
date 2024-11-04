@@ -68,38 +68,78 @@
 
 <div class="membership-details">
   <h2>Membership Details</h2>
-  {{#if response.member}}
-  <p>Membership Status: Member</p>
-  {{else}}
-    <p>Membership Status:Not a Member</p>
-    {{/if}}
+
+  <?php
+
+  include '../../config.php';
+  $uid = $_COOKIE['user_id'];
+  $gym_id = $_GET['id'];
+
+  $sql = "SELECT * FROM gyms WHERE id='$gym_id'";
+  $result = mysqli_query($conn, $sql);
+
+  if ($result) {
+    $row = mysqli_fetch_assoc($result);
+    $gym_details= $row;
+    
+  }
+
+
+  $sql = "SELECT * FROM memberships WHERE gym_id='$gym_id' AND uid='$uid'";
+  $result = mysqli_query($conn, $sql);
+  $membership=false;
+
+  if ($result) {
+
+    if (mysqli_num_rows($result) > 0){
+      $membership=true;
+    }
+    
+  }
+
+  
+
+  
+  if($membership==true){
+    print("<p>Membership Status: Member</p>");
+    $total_amount=$gym_details['monthly_fee'];
+  }else{
+    print("<p>Membership Status:Not a Member</p>");
+    $total_amount=$gym_details['membership_fee']+$gym_details['monthly_fee'];
+  }
+?>
   <ul>
     <li>Amount to be Paid:
       <ul>
-        {{#if response.member}}
-          <li>Membership Fee: <span id="membership-fee">not applicable</span></li>
-
-  {{else}}
-        <li>Membership Fee: <span id="membership-fee">Rs {{response.membershipFee}}</span></li>
-    {{/if}}
-        <li>Monthly Fee: Rs {{response.monthlyFee}}</li>
+        <?php
+        if($membership==true){
+          print('<li>Membership Fee: <span id="membership-fee">not applicable</span></li>');
+        }else{
+  
+        print('<li>Membership Fee: <span id="membership-fee">Rs '.$gym_details['membership_fee'].'</span></li>');
+        }
+   ?>
+        <li>Monthly Fee: Rs <?php print($gym_details['monthly_fee']) ?></li>
       </ul>
     </li>
   </ul>
   <hr>
-  <p>Total Amount to be Paid: <span id="total-amount">Rs {{response.amounttobe}}</span></p>
-  <button id="bookNowBtn" class="bookNowBtn">Pay Now</button>
+  <p>Total Amount to be Paid: <span id="total-amount">Rs <?php print($total_amount) ?></span></p>
+  <form action="userReg.php" method="post">
+  <input type="hidden" name="gym_id" value="<?php echo htmlspecialchars($gym_id); ?>">
+  <button id="bookNowBtn" class="bookNowBtn" type="submit" name="payment">Pay Now</button>
+  </form>
 </div>
 
 
 <script>
     document.getElementById("bookNowBtn").addEventListener("click", function() {
         // Get the gym name from the script tag directly
-        const gymName = "{{response.name}}"; // Accessing the gym name from Handlebars
+        const gymName = "<?php print($gym_details['name']) ?>"; // Accessing the gym name from Handlebars
 
         // Get other details similarly
-        const Fee = {{response.amounttobe}}
-        const gymid="{{response._id}}"
+        const Fee = <?php print($gym_details['monthly_fee']) ?>
+        const gymid="<?php print($gym_details['id']) ?>"
 
         // Create an object with the details
         const bookingDetails = {

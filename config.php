@@ -2,26 +2,13 @@
 
     $conn= mysqli_connect("sql.freedb.tech","freedb_FluxUser","Tq6f$4C85?y$3pu","freedb_FluxFitDB","3306");
     if($conn){
-        print("connected db");
+        //print("connected db");
 
 
     }else{
+        echo "<script>alert('Database connection error!');</script>";
         die("error");
     }
-
-
-    function signup($email,$name,$password){
-        $hashed_pass=password_hash($password, PASSWORD_DEFAULT);
-        $sql = "INSERT INTO user (email, name, password) VALUES ('$email', '$name', '$hashed_pass')";
-
-        if (mysqli_query($conn, $sql)) {
-            echo "User registered successfully!";
-        } else {
-            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-        }
-
-    }
-
 
 
     function login($email, $paasword){

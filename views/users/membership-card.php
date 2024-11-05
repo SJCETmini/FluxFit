@@ -1,3 +1,11 @@
+
+<?php
+include '../layout/userLayout.php';
+include '../partials/user-nav.php';
+include '../partials/user-sidebar.php';
+include '../../config.php';
+?>
+
 <section id="content">
     <main>
         <div class="membership-card-section">

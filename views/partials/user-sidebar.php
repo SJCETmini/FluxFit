@@ -13,13 +13,13 @@
 			</a>
 		</li>
 		<li>
-			<a href="/users/recent">
+			<a href="/views/users/recentBookings.php">
 				<i class='bx bxs-shopping-bag-alt'></i>
 				<span class="text">Recent Bookings</span>
 			</a>
 		</li>
 		<li>
-			<a href="/users/membership-card">
+			<a href="/views/users/membership-card.php">
 				<i class='bx bxs-doughnut-chart'></i>
 				<span class="text">Membership Card</span>
 			</a>

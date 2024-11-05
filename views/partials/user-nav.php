@@ -8,7 +8,8 @@
 				<button type="submit" class="search-btn"><i class='bx bx-search'></i></button>
 			</div>
 		</form>
-
+<?php
+/*
 		{{!-- <input type="checkbox" id="switch-mode" hidden>
 		<label for="switch-mode" class="switch-mode"></label>
 		<a href="#" class="notification">
@@ -18,7 +19,8 @@
 		<a href="#" class="profile">
 			<img src="/public/images/user3.jpeg">
 		</a> --}}
-
+		*/
+?>
 		<div class="profile-icon" id="initialsPlaceholder"></div>
 
 

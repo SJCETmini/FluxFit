@@ -7,7 +7,7 @@
     </a>
 	<ul class="side-menu top">
 		<li>
-			<a href="/users">
+			<a href="/views/users/dashboard.php">
 				<i class='bx bxs-dashboard'></i>
 				<span class="text">Dashboard</span>
 			</a>
@@ -46,7 +46,7 @@
 			</li> -->
 
 		<li>
-			<a href="/users/logout" class="logout">
+			<a href="/views/users/logout.php" class="logout">
 				<i class='bx bxs-log-out-circle'></i>
 				<span class="text">Logout</span>
 			</a>

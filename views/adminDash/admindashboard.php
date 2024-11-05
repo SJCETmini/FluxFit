@@ -1,3 +1,32 @@
+<?php
+include '../../config.php';
+
+// Fetch total gyms count
+$result = mysqli_query($conn, "SELECT COUNT(*) as gymcount FROM gyms");
+$gymcount = mysqli_fetch_assoc($result)['gymcount'];
+
+// Fetch active users count
+$result = mysqli_query($conn, "SELECT COUNT(id) as usercount FROM users");
+$usercount = mysqli_fetch_assoc($result)['usercount'];
+
+// Fetch total revenue
+// $result = mysqli_query($conn, "SELECT SUM(amount) as revenue FROM transactions");
+// $revenue = mysqli_fetch_assoc($result)['revenue'];
+
+// Fetch pending verifications
+$result = mysqli_query($conn, "SELECT * FROM owners");
+$ownersapplied = [];
+while ($row = mysqli_fetch_assoc($result)) {
+    $ownersapplied[] = $row;
+}
+
+// Close the database connection
+mysqli_close($conn);
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -59,7 +88,8 @@
                             <div class="stat-icon">
                                 <i class="fas fa-dumbbell"></i>
                             </div>
-                            <div class="stat-value">{{counts.gymcount}}</div>
+                            <!-- <div class="stat-value">{{counts.gymcount}}</div> -->
+                            <div class="stat-value"><?php echo $gymcount; ?></div>
                             <div class="stat-label">Total Gyms</div>
                         </div>
                     </div>
@@ -68,11 +98,11 @@
                             <div class="stat-icon">
                                 <i class="fas fa-users"></i>
                             </div>
-                            <div class="stat-value">{{counts.usercount}}</div>
-                            <div class="stat-label">Active Users</div>
+                            <div class="stat-value"> <?php echo $usercount; ?></div>
+                            <div class="stat-label">Total Users</div>
                         </div>
                     </div>
-                    <div class="col-6 col-md-3 s">
+                    <!-- <div class="col-6 col-md-3 s">
                         <div class="stat-card">
                             <div class="stat-icon">
                                 <i class="fas fa-dollar-sign"></i>
@@ -80,11 +110,11 @@
                             <div class="stat-value">{{revenue}}</div>
                             <div class="stat-label">Total Revenue</div>
                         </div>
-                    </div>
+                    </div> -->
                     
                 </div>
                
-
+<!-- 
 
                 <div class="verification mt-4">
                     <h4>Pending Verifications</h4>
@@ -105,7 +135,35 @@
                         {{/each}}
                     </ol>
                 </div>
-            </section>
+            </section> -->
+
+
+
+            <div class="verification mt-4">
+    <h4>Pending Verifications</h4>
+    <ol class="verification-list mt-3">
+        <?php if (!empty($ownersapplied)): ?>
+            <?php foreach ($ownersapplied as $owner): ?>
+                <li class="d-flex justify-content-between align-items-center">
+                    <div class="gym-details">
+                        <h3>Name: <?php echo htmlspecialchars($owner['username']); ?></h3>
+                        <p class="gym-info">ID: <?php echo htmlspecialchars($owner['_id']); ?></p>
+                        <p class="gym-info"><i class="fas fa-user"></i> <?php echo htmlspecialchars($owner['email']); ?></p>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="btn btn-primary view-btn">
+                            <a href="/admin/review-application/?id=<?php echo urlencode($owner['_id']); ?>&uname=<?php echo urlencode($owner['username']); ?>&email=<?php echo urlencode($owner['email']); ?>">View Application</a>
+                        </button>
+                        <button class="btn btn-success verify-btn">Verify</button>
+                        <button class="btn btn-danger reject-btn">Reject</button>
+                    </div>
+                </li>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <li>No pending verifications found.</li>
+        <?php endif; ?>
+    </ol>
+</div>
 
             <section id="customers">
                 <div class="gyms" id="gyms">

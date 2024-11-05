@@ -18,12 +18,12 @@ if(isset($_POST['adminlogin'])) {
             setcookie("admin_name", $row['uname'], time() + (86400 * 30), "/"); 
             
             echo "Login successful!";
+            header("Location: /views/adminDash/admindashboard.php");
         } else {
             echo "Invalid password.";
         }
     } else {
         echo "No admin found with that email address.";
     }
-    header("Location: /views/adminDash/admindashboard.php");
 }
 ?>

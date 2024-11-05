@@ -36,13 +36,13 @@ if(isset($_POST['userLogIn'])) {
             setcookie("user_name", $row['name'], time() + (86400 * 30), "/"); 
             
             echo "Login successful!";
+            header("Location: /views/users/dashboard.php");
         } else {
             echo "Invalid password.";
         }
     } else {
         echo "No user found with that email address.";
     }
-    header("Location: /views/users/owner-dashboard.php");
 }
 
 if(isset($_POST['payment'])){

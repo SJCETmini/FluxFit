@@ -1,3 +1,25 @@
+<?php
+include '../../config.php';
+
+//$ownerName = isset($_COOKIE['owner_name']) ? $_COOKIE['owner_name'] : 'Guest';
+$ownerName = isset($_GET['name']) ? $_GET['name'] : 'Guest';
+$ownerId = isset($_GET['id']) ? $_GET['id'] : null;
+
+echo "$ownerId";
+
+$gyms = [];
+
+$sql = "SELECT id, name, address, description FROM gyms WHERE ownerId='$ownerId'";
+$result = mysqli_query($conn, $sql);
+
+if ($result) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        $gyms[] = $row;
+    }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -56,10 +78,10 @@
   <div class="container-fluid ">
     <div class="jumbotron">
       <div class="container">
-        <h1 class="display-4">Welcome, {{username}}</h1>
+        <h1 class="display-4">Welcome, <?php echo htmlspecialchars($ownerName); ?></h1>
         <p class="lead">Manage your enterprises here.</p>
         <div class="text-center">
-          <a class="add-enterprice" href="/gymowner/registergym" role="button">Add Enterprise</a>
+          <a class="add-enterprice" href="/views/gym-owner/registergym.php?name=<?php echo $ownerName; ?>&id=<?php echo $ownerId; ?>" role="button">Add Enterprise</a>
           <!-- <button> Add Enterprice</button> -->
         </div>
       </div>
@@ -69,21 +91,21 @@
       <div class="col-12">
         <h1 class="owner-section-heading">Enterprise Listing</h1>
       </div>
-      {{#each response}}
+      <?php foreach ($gyms as $gym): ?>
       <div class="col-12 col-md-6 col-lg-3">
         <div class="shadow owner-item-card p-3 mb-3">
           <div id="carouselExampleSlidesOnly{{@index}}" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner" style="border-radius: 16px;">
+            <!-- <div class="carousel-inner" style="border-radius: 16px;">
               {{#each images}}
               <div class="carousel-item {{#if @first}}active{{/if}}">
                 <img src="data:{{contentType}};base64,{{data}}" alt="{{imageName}}"
                   class="d-block w-100 owner-item-image" alt="...">
               </div>
               {{/each}}
-            </div>
+            </div> -->
           </div>
-          <h1 class="owner-card-title">{{name}}</h1>
-          <p id="description" class="owner-card-description description">{{this.description}}</p>
+          <h1 class="owner-card-title"><?php echo htmlspecialchars($gym['name']); ?></h1>
+          <p id="description" class="owner-card-description description"><?php echo htmlspecialchars($gym['description']); ?></p>
           <a href="gymowner/owner-gym-detail/?id={{this._id}}" class="owner-item-link">
             Know more
             <svg width="16px" height="16px" viewBox="0 0 16 16" class="bi bi-arrow-right-short" fill="#d0b200"
@@ -94,7 +116,7 @@
           </a>
         </div>
       </div>
-      {{/each}}
+      <?php endforeach; ?>
     </div>
   </div>
 </div>

@@ -1,3 +1,12 @@
+<?php
+include '../../config.php';
+
+$ownerName = isset($_GET['name']) ? $_GET['name'] : 'Guest';
+$ownerId = isset($_GET['id']) ? $_GET['id'] : null;
+?>
+
+
+
 <html lang="en">
 
 <head>
@@ -10,11 +19,11 @@
 </head>
 
 <body>
-  <div class="gym-register-section">
+  <div class="gym-register-section" style="min-height: 100vh;">
     <div class="container-fluid my-4 mx-auto">
       <h2>Gym Details Form</h2>
-      <form id="gymForm" action="/gymowner/registergym" method="post">
-        <div class="row mb-4">
+      <form id="gymForm" action="ownerReg.php?name=<?php echo $ownerName; ?>&id=<?php echo $ownerId; ?>" method="post">
+        <div class="pt-3 row mb-4">
           <div class="col-lg-5">
             <!-- Gym Name -->
             <div class="form-group">
@@ -38,12 +47,12 @@
                 placeholder="Enter membership fee" required />
             </div>
             <!-- Monthly fee -->
-            <div class="form-group">
+            <!-- <div class="form-group">
               <label for="monthlyFees"><strong><i class="fas fa-money-bill-alt"></i>
                   Monthly Fees:</strong></label>
               <input type="number" class="form-control" id="monthlyFees" name="monthlyFees"
                 placeholder="Enter monthly fees" required />
-            </div>
+            </div> -->
           </div>
           <div class="col-lg-7 second-col">
             <!-- Peak time -->
@@ -76,7 +85,7 @@
                             </div>
                         </div> -->
             <!-- Holidays -->
-            <div class="form-group">
+            <!-- <div class="form-group">
               <label><strong><i class="fas fa-calendar-alt"></i>
                   Holiday Days:</strong></label><br />
               <div class="form-check form-check-inline">
@@ -107,7 +116,7 @@
                 <input class="form-check-input" type="checkbox" id="sunday" name="holidayDays" value="Sunday" />
                 <label class="form-check-label" for="sunday">Sunday</label>
               </div>
-            </div>
+            </div> -->
             <!-- Opening Hours -->
             <div class="form-group opening-hours">
               <label><strong><i class="fas fa-clock"></i>
@@ -121,14 +130,30 @@
                   <label for="mondayEndTime">Closing Time:</label>
                   <input type="time" class="form-control" id="mondayEndTime" name="closingtime" />
                 </div>
-                <!-- Repeat for other days -->
               </div>
             </div>
 
+            <!-- Monthly fee -->
+            <div class="form-group">
+              <label for="monthlyFees"><strong><i class="fas fa-money-bill-alt"></i>
+                  Monthly Fees:</strong></label>
+              <input type="number" class="form-control" id="monthlyFees" name="monthlyFees"
+                placeholder="Enter monthly fees" required />
+            </div>
+
+            <div class="row">
+              <!-- Short Desciption -->
+              <div class="form-group w-100">
+                <label for="gymDescription"><strong><i class="fas fa-edit"></i>
+                    Short Description:</strong></label>
+                <textarea class="form-control desc" id="gymDescription" name="gymDescription" rows="3"
+                  placeholder="Enter a short description of the gym" required></textarea>
+              </div>
+            </div>
 
              <!-- peak time  -->
 
-            <div class="form-group">
+            <!-- <div class="form-group">
               <label><strong><i class="fas fa-calendar-alt"></i>
                   Peak Time:</strong></label><br />
               <div class="form-row justify-content-between">
@@ -154,12 +179,12 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
 
-        <div class="row mb-4">
-          <!-- Amneties -->
+        <!-- <div class="row mb-4">
+          
           <div class="col-md-6">
             <div class="form-group">
               <label><strong> Amenities:</strong></label><br />
@@ -189,7 +214,7 @@
               </div>
             </div>
           </div>
-          <!-- Specialties -->
+          
           <div class="col-md-6">
             <div class="form-group">
               <label><strong> Specialties:</strong></label><br />
@@ -214,18 +239,20 @@
               </div>
             </div>
           </div>
-        </div>
-        <div class="row">
-          <!-- Short Desciption -->
+        </div> -->
+        
+        <!-- <div class="row">
           <div class="form-group w-100">
             <label for="gymDescription"><strong><i class="fas fa-edit"></i>
                 Short Description:</strong></label>
             <textarea class="form-control desc" id="gymDescription" name="gymDescription" rows="3"
               placeholder="Enter a short description of the gym" required></textarea>
           </div>
-        </div>
+        </div> -->
+
+
         <div class="text-center">
-          <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i>
+          <button type="submit" name="addEnterprise" class="btn btn-primary"><i class="fas fa-paper-plane"></i>
             Submit</button>
         </div>
       </form>

@@ -83,7 +83,7 @@
     
     <div class="movie-details">
       <p class="m">GYM-Ticket </p>
-      <img src="/images/Flexi Link Logo.png" class="poster ">
+      <img src="/public/images/Flexi Link Logo.png" class="poster ">
       <div class="movie">
         <h4>{{gymname}}</h4>
         <p>Issued Date: {{ formatedisdate }}</p>
